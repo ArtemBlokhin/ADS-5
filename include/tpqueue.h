@@ -5,25 +5,30 @@
 
 template<typename T>
 class TPQueue {
-  struct ITEM {  
-    T data ;
-    ITEM * next ;
+  struct ITEM { 
+    T data;
+    ITEM * next;
   };
-  private:
-    ITEM * head ;
-    ITEM * tail ;
-    ITEM *create(T data) {
-      ITEM *t = new ITEM;
-      t->data = data;
-      t->next = nullptr;
-      return t;
-    }
-  public:
-    TPQueue() :head(nullptr), tail(nullptr) {}
-    ~TPQueue() {
-    while (head)
-      pop();
+  
+  
+ private:
+  ITEM * head;
+  ITEM * tail;
+  ITEM *create(T data) {
+  ITEM *t = new ITEM;
+  t->data = data;
+  t->next = nullptr;
+  return t;
   }
+  
+  
+ public:
+  TPQueue() :head(nullptr), tail(nullptr) {}
+  ~TPQueue() {
+  while (head)
+    pop();
+  }
+  
   void push(const T&data) {
     if (tail && head) {
       ITEM *temp = head;
@@ -49,8 +54,8 @@ class TPQueue {
       }
     } else {
       head = create(data);
-      tail = head;    
-    }    
+      tail = head;  
+    }
   }
   T pop() {
     ITEM *temp = head->next;
